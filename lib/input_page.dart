@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusablecode.dart';
 import 'icon_content.dart';
 import 'constants.dart';
+import 'result.dart';
+import 'bottomButton.dart';
 
 enum Gender {
   male,
@@ -136,10 +138,10 @@ class _InputpageState extends State<Inputpage> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget> [
+                          children: <Widget>[
                             Roundiconbutton(
                               icon: FontAwesomeIcons.minus,
-                              onPressed: (){
+                              onPressed: () {
                                 setState(() {
                                   weight--;
                                 });
@@ -150,7 +152,7 @@ class _InputpageState extends State<Inputpage> {
                             ),
                             Roundiconbutton(
                               icon: FontAwesomeIcons.plus,
-                              onPressed: (){
+                              onPressed: () {
                                 setState(() {
                                   weight++;
                                 });
@@ -178,10 +180,10 @@ class _InputpageState extends State<Inputpage> {
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget> [
+                          children: <Widget>[
                             Roundiconbutton(
                               icon: FontAwesomeIcons.minus,
-                              onPressed: (){
+                              onPressed: () {
                                 setState(() {
                                   age--;
                                 });
@@ -192,7 +194,7 @@ class _InputpageState extends State<Inputpage> {
                             ),
                             Roundiconbutton(
                               icon: FontAwesomeIcons.plus,
-                              onPressed: (){
+                              onPressed: () {
                                 setState(() {
                                   age++;
                                 });
@@ -207,11 +209,18 @@ class _InputpageState extends State<Inputpage> {
               ],
             ),
           ),
-          Container(
-            color: Colors.teal,
-            margin: EdgeInsets.only(top: 10.0),
-            height: kBottomContainerHeight,
-            width: double.infinity,
+          BottomButton(
+            buttontitle: 'CALCULATE',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (Context) {
+                    return Result();
+                  },
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -220,7 +229,6 @@ class _InputpageState extends State<Inputpage> {
 }
 
 class Roundiconbutton extends StatelessWidget {
-
   Roundiconbutton({this.icon, this.onPressed});
   final IconData icon;
   final Function onPressed;
@@ -228,7 +236,8 @@ class Roundiconbutton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RawMaterialButton(
       child: Icon(
-        icon,color: Color(0xff151515),
+        icon,
+        color: Color(0xff151515),
       ),
       onPressed: onPressed,
       elevation: 6.0,
