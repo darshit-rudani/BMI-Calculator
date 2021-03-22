@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'reusablecode.dart';
+import 'icon_content.dart';
 
 const bottomContainerHeight = 70.0;
 const color = Color(0xff424242);
@@ -24,11 +26,19 @@ class _InputpageState extends State<Inputpage> {
                 Expanded(
                   child: designcode(
                     color: color,
+                    cardChild: Iconreusable(
+                      icon: FontAwesomeIcons.mars,
+                      lable: 'MALE',
+                    ),
                   ),
                 ),
                 Expanded(
                   child: designcode(
                     color: color,
+                    cardChild: Iconreusable(
+                      icon: FontAwesomeIcons.venus,
+                      lable: 'FEMALE',
+                    ),
                   ),
                 ),
               ],
@@ -62,26 +72,6 @@ class _InputpageState extends State<Inputpage> {
             width: double.infinity,
           ),
         ],
-      ),
-    );
-  }
-}
-
-// ignore: camel_case_types, must_be_immutable
-class designcode extends StatelessWidget {
-  designcode({@required this.color, this.cardChild});
-
-  final Color color;
-  final Widget cardChild;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: cardChild,
-      margin: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: Color(0xFF424242),
-        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
