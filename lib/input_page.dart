@@ -5,6 +5,7 @@ import 'icon_content.dart';
 import 'constants.dart';
 import 'result.dart';
 import 'bottomButton.dart';
+import 'calculator.dart';
 
 enum Gender {
   male,
@@ -132,9 +133,19 @@ class _InputpageState extends State<Inputpage> {
                           'WEIGHT',
                           style: kLableTextStyle,
                         ),
-                        Text(
-                          weight.toString(),
-                          style: kNumberTextStyle,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget> [
+                            Text(
+                              weight.toString(),
+                              style: kNumberTextStyle,
+                            ),
+                            Text(
+                              'kg',
+                              style: kLableTextStyle,
+                            ),
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -212,12 +223,16 @@ class _InputpageState extends State<Inputpage> {
           BottomButton(
             buttontitle: 'CALCULATE',
             onTap: () {
+              CalculatorBmi calc =
+                  CalculatorBmi(height: height, weight: weight);
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (Context) {
-                    return Result();
-                  },
+                  builder: (context) => Result(
+                    bmiResult: calc.calculatbmi(),
+                    resultText: calc.getresult(),
+                    interpretation: calc.getInterpretation(),
+                  ),
                 ),
               );
             },
