@@ -4,7 +4,13 @@ import 'reusablecode.dart';
 import 'icon_content.dart';
 
 const bottomContainerHeight = 70.0;
-const color = Color(0xff424242);
+const color = Color(0xff151515);
+const inactivecolor = Color(0xff424242);
+
+enum Gender {
+  male,
+  female,
+}
 
 class Inputpage extends StatefulWidget {
   @override
@@ -12,6 +18,8 @@ class Inputpage extends StatefulWidget {
 }
 
 class _InputpageState extends State<Inputpage> {
+  Gender selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +33,13 @@ class _InputpageState extends State<Inputpage> {
               children: <Widget>[
                 Expanded(
                   child: designcode(
-                    color: color,
+                    onPress: (){
+                      setState(() {
+                        selectedGender = Gender.male;
+                      });
+                    },
+                    color:
+                        selectedGender == Gender.male ? color : inactivecolor,
                     cardChild: Iconreusable(
                       icon: FontAwesomeIcons.mars,
                       lable: 'MALE',
@@ -34,7 +48,14 @@ class _InputpageState extends State<Inputpage> {
                 ),
                 Expanded(
                   child: designcode(
-                    color: color,
+                    onPress: (){
+                      setState(() {
+                        selectedGender = Gender.female;
+                      });
+                    },
+                    color: selectedGender == Gender.female
+                        ? color
+                        : inactivecolor,
                     cardChild: Iconreusable(
                       icon: FontAwesomeIcons.venus,
                       lable: 'FEMALE',
