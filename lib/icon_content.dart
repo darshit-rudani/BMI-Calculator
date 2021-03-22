@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'constants.dart';
 
 class Iconreusable extends StatelessWidget {
   Iconreusable({@required this.icon, this.lable});
@@ -19,7 +20,7 @@ class Iconreusable extends StatelessWidget {
         ),
         Text(
           lable,
-          style: TextStyle(fontSize: 20.0, color: Colors.white),
+          style: kLableTextStyle,
         ),
       ],
     );

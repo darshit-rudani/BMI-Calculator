@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusablecode.dart';
 import 'icon_content.dart';
-
-const bottomContainerHeight = 70.0;
-const color = Color(0xff151515);
-const inactivecolor = Color(0xff424242);
+import 'constants.dart';
 
 enum Gender {
   male,
@@ -19,6 +16,7 @@ class Inputpage extends StatefulWidget {
 
 class _InputpageState extends State<Inputpage> {
   Gender selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +31,14 @@ class _InputpageState extends State<Inputpage> {
               children: <Widget>[
                 Expanded(
                   child: designcode(
-                    onPress: (){
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.male;
                       });
                     },
-                    color:
-                        selectedGender == Gender.male ? color : inactivecolor,
+                    color: selectedGender == Gender.male
+                        ? kActivecolor
+                        : kInactivecolor,
                     cardChild: Iconreusable(
                       icon: FontAwesomeIcons.mars,
                       lable: 'MALE',
@@ -48,14 +47,14 @@ class _InputpageState extends State<Inputpage> {
                 ),
                 Expanded(
                   child: designcode(
-                    onPress: (){
+                    onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
                       });
                     },
                     color: selectedGender == Gender.female
-                        ? color
-                        : inactivecolor,
+                        ? kActivecolor
+                        : kInactivecolor,
                     cardChild: Iconreusable(
                       icon: FontAwesomeIcons.venus,
                       lable: 'FEMALE',
@@ -67,7 +66,53 @@ class _InputpageState extends State<Inputpage> {
           ),
           Expanded(
             child: designcode(
-              color: color,
+              color: kActivecolor,
+              cardChild: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Center(
+                    child: Text(
+                      'HEIGHT',
+                      style: kLableTextStyle,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    children: <Widget>[
+                      Text(
+                        height.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: kLableTextStyle,
+                      )
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      thumbShape:
+                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                      overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 30.0),
+                    ),
+                    child: Slider(
+                      value: height.toDouble(),
+                      min: 100,
+                      max: 250,
+                      activeColor: Color(0xFF009688),
+                      inactiveColor: Color(0xff8d8e98),
+                      onChanged: (double newValue) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -75,12 +120,12 @@ class _InputpageState extends State<Inputpage> {
               children: <Widget>[
                 Expanded(
                   child: designcode(
-                    color: color,
+                    color: kActivecolor,
                   ),
                 ),
                 Expanded(
                   child: designcode(
-                    color: color,
+                    color: kActivecolor,
                   ),
                 ),
               ],
@@ -89,7 +134,7 @@ class _InputpageState extends State<Inputpage> {
           Container(
             color: Colors.teal,
             margin: EdgeInsets.only(top: 10.0),
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
             width: double.infinity,
           ),
         ],
