@@ -19,54 +19,34 @@ class _InputpageState extends State<Inputpage> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF424242),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                    child: designcode(
+                      color: Color(0xFF424242),
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF424242),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                    child: designcode(
+                      color: Color(0xFF424242),
                     ),
                   ),
                 ],
               ),
             ),
             Expanded(
-              child: Container(
-                margin: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  color: Color(0xFF424242),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
+              child: designcode(
+                color: Color(0xFF424242),
               ),
             ),
             Expanded(
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF424242),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                    child: designcode(
+                      color: Color(0xFF424242),
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      margin: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF424242),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
+                    child: designcode(
+                      color: Color(0xFF424242),
                     ),
                   ),
                 ],
@@ -74,5 +54,21 @@ class _InputpageState extends State<Inputpage> {
             ),
           ],
         ));
+  }
+}
+
+// ignore: camel_case_types, must_be_immutable
+class designcode extends StatelessWidget {
+  designcode({@required this.color});
+  Color color;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+        color: Color(0xFF424242),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+    );
   }
 }
