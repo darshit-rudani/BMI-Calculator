@@ -85,6 +85,7 @@ class _InputpageState extends State<Inputpage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
                     children: <Widget>[
                       Text(
                         height.toString(),
@@ -135,6 +136,7 @@ class _InputpageState extends State<Inputpage> {
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget> [
                             Text(
